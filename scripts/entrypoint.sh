@@ -23,7 +23,7 @@ elif [ "$INPUT_REPORTER" == 'github-pr-review' ] ||
 
   # Running special version of `flake8` to match the `reviewdog` format:
   output=$(flake8 $INPUT_PATH --append-config='/action-config.cfg')
-  echo "$output" | reviewdog -f=pep8 -reporter="$INPUT_REPORTER" -level=error
+  echo "$output" | reviewdog -f=pep8 -reporter="$INPUT_REPORTER" -level=warning
   # `reviewdog` does not fail with any status code, so we have to get dirty:
   status=0
 else
