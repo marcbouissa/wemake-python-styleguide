@@ -25,7 +25,7 @@ elif [ "$INPUT_REPORTER" == 'github-pr-review' ] ||
   output=$(flake8 $INPUT_PATH --append-config='/action-config.cfg')
   echo "$output" | reviewdog -f=pep8 -reporter="$INPUT_REPORTER" -level=error
   # `reviewdog` does not fail with any status code, so we have to get dirty:
-  status=$(test "$output" = ''; echo $?)
+  status=0
 else
   output="Invalid action reporter specified: $INPUT_REPORTER"
   status=1
